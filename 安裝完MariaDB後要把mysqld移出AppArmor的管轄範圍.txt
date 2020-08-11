@@ -1,0 +1,11 @@
+安裝AppArmor Utilities:
+
+sudo apt-get install apparmor-utils
+
+把mysqld移出AppArmor的管轄範圍：
+
+sudo aa-disable mysqld
+
+重新啟動AppArmor服務：
+
+sudo service apparmor restart

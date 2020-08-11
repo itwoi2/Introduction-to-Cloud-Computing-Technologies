@@ -1,0 +1,18 @@
+安裝xrdp套件：sudo apt-get -y install xrdp 
+
+檢查xrdp版本：xrdp -v
+
+編輯/etc/xrdp/startwm.sh：sudo nano /etc/xrdp/startwm.sh
+
+把最後兩行變成註解，再加上這一行：lxsession -s Lubuntu -e LXDE
+
+設定keyboard layout：
+
+cd /etc/xrdp 
+test=$(setxkbmap -query | awk -F":" '/layout/ {print $2}') 
+echo "your current keyboard layout is.." $test
+setxkbmap -layout $test 
+sudo cp /etc/xrdp/km-00000409.ini /etc/xrdp/km-00000409.ini.bak 
+sudo xrdp-genkeymap km-00000409.ini
+Reference:
+xRDP – How to Install on Lubuntu 16.10: http://c-nergy.be/blog/?p=10365
